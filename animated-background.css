@@ -1,21 +1,46 @@
-/* Animated background layer — visible in-page motion, no content changes. */
+/* Kilix animated background — visible motion inspired by the reference, without changing content. */
 
 @keyframes kilixFloatA {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(-12deg) scale(1); opacity: .22; }
-    50% { transform: translate3d(-32px, 24px, 0) rotate(-6deg) scale(1.08); opacity: .42; }
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-12deg) scale(1);
+        opacity: .48;
+    }
+    50% {
+        transform: translate3d(-34px, 24px, 0) rotate(-5deg) scale(1.08);
+        opacity: .68;
+    }
 }
 
 @keyframes kilixFloatB {
-    0%, 100% { transform: translate3d(0, 0, 0) rotate(16deg) scale(1); opacity: .18; }
-    50% { transform: translate3d(28px, -22px, 0) rotate(9deg) scale(1.1); opacity: .34; }
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(16deg) scale(1);
+        opacity: .34;
+    }
+    50% {
+        transform: translate3d(34px, -26px, 0) rotate(8deg) scale(1.1);
+        opacity: .56;
+    }
 }
 
 @keyframes kilixFloatC {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .16; }
-    50% { transform: translate3d(-16px, 18px, 0) scale(1.06); opacity: .28; }
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: .25;
+    }
+    50% {
+        transform: translate3d(-22px, 18px, 0) scale(1.12);
+        opacity: .44;
+    }
 }
 
-/* The main shapes live inside each visible section so section backgrounds cannot hide them. */
+/* Keep the moving shapes inside visible sections so their motion cannot disappear behind an opaque page canvas. */
+.hero-section,
+.features-section,
+.download-section {
+    position: relative;
+    overflow: hidden;
+}
+
 .hero-section::before,
 .features-section::before,
 .download-section::before {
@@ -23,39 +48,50 @@
     position: absolute;
     pointer-events: none;
     z-index: 0;
+    display: block;
+    border-radius: 28px;
+    will-change: transform, opacity;
 }
 
 .hero-section::before {
-    top: -10%;
-    right: -18%;
+    top: -16%;
+    right: -12%;
     width: 78%;
-    height: 76%;
-    background: linear-gradient(135deg, rgba(255,179,71,.30), rgba(255,122,26,.08) 58%, transparent 80%);
-    clip-path: polygon(34% 0, 100% 0, 100% 72%, 68% 100%, 0 52%);
+    height: 86%;
+    background: linear-gradient(135deg,
+        rgba(255,179,71,.34) 0%,
+        rgba(255,122,26,.18) 42%,
+        rgba(255,122,26,.055) 70%,
+        transparent 88%);
+    clip-path: polygon(30% 0, 100% 0, 100% 70%, 72% 100%, 0 58%);
     animation: kilixFloatA 11s ease-in-out infinite alternate;
-    will-change: transform, opacity;
 }
 
 .features-section::before {
-    left: -20%;
+    left: -16%;
     top: 12%;
-    width: 74%;
-    height: 70%;
-    background: linear-gradient(140deg, transparent 8%, rgba(255,179,71,.22) 48%, rgba(255,122,26,.07) 80%);
-    clip-path: polygon(0 30%, 64% 0, 100% 32%, 76% 100%, 12% 82%);
+    width: 78%;
+    height: 78%;
+    background: linear-gradient(145deg,
+        transparent 5%,
+        rgba(255,179,71,.24) 40%,
+        rgba(255,122,26,.12) 68%,
+        transparent 92%);
+    clip-path: polygon(0 24%, 58% 0, 100% 34%, 78% 100%, 12% 86%);
     animation: kilixFloatB 15s ease-in-out infinite alternate;
-    will-change: transform, opacity;
 }
 
 .download-section::before {
-    right: -12%;
-    bottom: -35%;
-    width: 68%;
-    height: 135%;
-    background: linear-gradient(135deg, rgba(255,179,71,.14), rgba(255,122,26,.03));
-    clip-path: polygon(46% 0, 100% 24%, 78% 100%, 0 82%);
+    right: -10%;
+    bottom: -36%;
+    width: 74%;
+    height: 138%;
+    background: linear-gradient(135deg,
+        rgba(255,179,71,.22),
+        rgba(255,122,26,.08) 55%,
+        transparent 82%);
+    clip-path: polygon(44% 0, 100% 22%, 78% 100%, 0 82%);
     animation: kilixFloatC 13s ease-in-out infinite alternate;
-    will-change: transform, opacity;
 }
 
 .hero-section > *,
@@ -67,23 +103,23 @@
 
 @media (max-width: 768px) {
     .hero-section::before {
-        top: -4%;
-        right: -42%;
-        width: 125%;
-        height: 62%;
-        opacity: .95;
+        top: -6%;
+        right: -46%;
+        width: 132%;
+        height: 66%;
     }
 
     .features-section::before {
-        left: -48%;
-        top: 8%;
-        width: 128%;
-        height: 72%;
+        left: -52%;
+        top: 6%;
+        width: 136%;
+        height: 76%;
     }
 
     .download-section::before {
-        right: -38%;
-        width: 118%;
+        right: -42%;
+        width: 126%;
+        bottom: -24%;
     }
 }
 
