@@ -1,0 +1,58 @@
+/* Animated background layer — visual polish only, no content changes. */
+
+@keyframes kilixBgFloatRight {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(-16deg) scale(1);
+        opacity: .82;
+    }
+    50% {
+        transform: translate3d(-18px, 14px, 0) rotate(-10deg) scale(1.04);
+        opacity: 1;
+    }
+}
+
+@keyframes kilixBgFloatLeft {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(17deg) scale(1);
+        opacity: .74;
+    }
+    50% {
+        transform: translate3d(20px, -16px, 0) rotate(11deg) scale(1.05);
+        opacity: .95;
+    }
+}
+
+@keyframes kilixHeroGlow {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: .7;
+    }
+    50% {
+        transform: translate3d(-12px, 10px, 0) scale(1.03);
+        opacity: .95;
+    }
+}
+
+body::before {
+    animation: kilixBgFloatRight 18s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+body::after {
+    animation: kilixBgFloatLeft 22s ease-in-out infinite;
+    will-change: transform, opacity;
+}
+
+.hero-section::after {
+    animation: kilixHeroGlow 16s ease-in-out infinite;
+    transform-origin: 70% 50%;
+    will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after,
+    .hero-section::after {
+        animation: none;
+    }
+}
