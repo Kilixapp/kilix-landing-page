@@ -1,87 +1,96 @@
-/* Animated background layer — visual polish only, no content changes. */
+/* Animated background layer — visible in-page motion, no content changes. */
 
-/* Keep the animated shapes above the page canvas, while all real page content stays above them. */
-body::before,
-body::after {
+@keyframes kilixFloatA {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-12deg) scale(1); opacity: .22; }
+    50% { transform: translate3d(-32px, 24px, 0) rotate(-6deg) scale(1.08); opacity: .42; }
+}
+
+@keyframes kilixFloatB {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(16deg) scale(1); opacity: .18; }
+    50% { transform: translate3d(28px, -22px, 0) rotate(9deg) scale(1.1); opacity: .34; }
+}
+
+@keyframes kilixFloatC {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: .16; }
+    50% { transform: translate3d(-16px, 18px, 0) scale(1.06); opacity: .28; }
+}
+
+/* The main shapes live inside each visible section so section backgrounds cannot hide them. */
+.hero-section::before,
+.features-section::before,
+.download-section::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
     z-index: 0;
 }
 
-body > * {
+.hero-section::before {
+    top: -10%;
+    right: -18%;
+    width: 78%;
+    height: 76%;
+    background: linear-gradient(135deg, rgba(255,179,71,.30), rgba(255,122,26,.08) 58%, transparent 80%);
+    clip-path: polygon(34% 0, 100% 0, 100% 72%, 68% 100%, 0 52%);
+    animation: kilixFloatA 11s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+}
+
+.features-section::before {
+    left: -20%;
+    top: 12%;
+    width: 74%;
+    height: 70%;
+    background: linear-gradient(140deg, transparent 8%, rgba(255,179,71,.22) 48%, rgba(255,122,26,.07) 80%);
+    clip-path: polygon(0 30%, 64% 0, 100% 32%, 76% 100%, 12% 82%);
+    animation: kilixFloatB 15s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+}
+
+.download-section::before {
+    right: -12%;
+    bottom: -35%;
+    width: 68%;
+    height: 135%;
+    background: linear-gradient(135deg, rgba(255,179,71,.14), rgba(255,122,26,.03));
+    clip-path: polygon(46% 0, 100% 24%, 78% 100%, 0 82%);
+    animation: kilixFloatC 13s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+}
+
+.hero-section > *,
+.features-section > *,
+.download-section > * {
     position: relative;
     z-index: 1;
 }
 
-@keyframes kilixBgFloatRight {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) rotate(-16deg) scale(1);
-        opacity: .70;
-    }
-    50% {
-        transform: translate3d(-26px, 18px, 0) rotate(-10deg) scale(1.06);
+@media (max-width: 768px) {
+    .hero-section::before {
+        top: -4%;
+        right: -42%;
+        width: 125%;
+        height: 62%;
         opacity: .95;
     }
-}
 
-@keyframes kilixBgFloatLeft {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) rotate(17deg) scale(1);
-        opacity: .62;
-    }
-    50% {
-        transform: translate3d(28px, -20px, 0) rotate(11deg) scale(1.07);
-        opacity: .88;
-    }
-}
-
-@keyframes kilixHeroGlow {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: .55;
-    }
-    50% {
-        transform: translate3d(-18px, 14px, 0) scale(1.05);
-        opacity: .90;
-    }
-}
-
-body::before {
-    animation: kilixBgFloatRight 14s ease-in-out infinite alternate;
-    will-change: transform, opacity;
-}
-
-body::after {
-    animation: kilixBgFloatLeft 17s ease-in-out infinite alternate;
-    will-change: transform, opacity;
-}
-
-.hero-section::after {
-    animation: kilixHeroGlow 12s ease-in-out infinite alternate;
-    transform-origin: 70% 50%;
-    will-change: transform, opacity;
-}
-
-@media (max-width: 768px) {
-    body::before {
-        width: 120vw;
-        height: 120vw;
-        right: -76vw;
+    .features-section::before {
+        left: -48%;
+        top: 8%;
+        width: 128%;
+        height: 72%;
     }
 
-    body::after {
-        width: 125vw;
-        height: 125vw;
-        left: -82vw;
-    }
-
-    .hero-section::after {
-        width: 120%;
+    .download-section::before {
+        right: -38%;
+        width: 118%;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body::before,
-    body::after,
-    .hero-section::after {
+    .hero-section::before,
+    .features-section::before,
+    .download-section::before {
         animation: none;
     }
 }
