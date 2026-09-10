@@ -336,13 +336,14 @@ body {
         padding-right: 16px;
     }
 
-    .nav-links {
-        display: none;
-    }
-
-    /* Keep the header/button proportions unchanged; only prevent overflow on small screens. */
+    /* Header: keep all existing links, but give them their own clean row on phones. */
     .nav-container {
-        height: 72px;
+        height: auto;
+        min-height: 68px;
+        flex-wrap: wrap;
+        padding-top: 10px;
+        padding-bottom: 8px;
+        row-gap: 8px;
     }
 
     .logo {
@@ -355,19 +356,62 @@ body {
         flex-shrink: 0;
     }
 
+    .nav-links {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 2px 0;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        margin: 0;
+        padding: 4px 7px;
+        font-size: 0.84rem;
+        line-height: 1.4;
+        flex: 0 0 auto;
+    }
+
     .hero-section {
-        padding: 60px 0 50px;
+        padding: 54px 0 46px;
+    }
+
+    .hero-container-centered {
+        width: 100%;
+    }
+
+    .badge {
+        max-width: 100%;
+        padding: 7px 14px;
+        font-size: 0.84rem;
     }
 
     .hero-content h1 {
-        font-size: 2.2rem;
+        font-size: clamp(1.9rem, 7vw, 2.2rem);
         line-height: 1.35;
+        margin: 14px 0 16px;
     }
 
     .hero-content p {
-        font-size: 1.05rem;
-        line-height: 1.8;
+        font-size: 1rem;
+        line-height: 1.85;
         margin-bottom: 28px;
+    }
+
+    .download-buttons.center {
+        margin-top: 20px;
+        gap: 12px;
     }
 
     .download-buttons {
@@ -377,53 +421,68 @@ body {
     }
 
     .btn-store {
-        width: 100%;
-        max-width: 300px;
+        width: min(100%, 340px);
         min-width: 0;
         justify-content: center;
+        padding: 12px 20px;
+    }
+
+    .btn-store i {
+        font-size: 1.9rem;
+    }
+
+    .btn-text span {
+        font-size: 1rem;
     }
 
     .features-section {
-        padding: 60px 0;
+        padding: 58px 0;
     }
 
     .section-title {
-        font-size: 1.9rem;
+        font-size: clamp(1.65rem, 6.5vw, 1.95rem);
         line-height: 1.45;
         margin-bottom: 32px;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
     }
 
     .feature-card {
-        padding: 32px 22px;
+        padding: 30px 20px;
+        border-radius: 16px;
+    }
+
+    .feature-card p {
+        font-size: 0.95rem;
+        line-height: 1.8;
     }
 
     .download-section {
-        padding: 55px 0;
+        padding: 52px 0;
     }
 
     .download-section h2 {
-        font-size: 1.9rem;
+        font-size: clamp(1.65rem, 6.5vw, 1.95rem);
         line-height: 1.45;
     }
 
     .download-section p {
-        font-size: 1rem;
+        font-size: 0.98rem;
         line-height: 1.8;
     }
 
     .footer {
-        padding: 45px 0 20px;
+        padding: 42px 0 18px;
     }
 
     .footer-container {
         flex-direction: column;
         text-align: center;
-        gap: 28px;
+        gap: 26px;
+        margin-bottom: 24px;
     }
 
     .footer-info p {
@@ -431,8 +490,17 @@ body {
         flex-wrap: wrap;
     }
 
+    .footer-social h4 {
+        font-size: 1rem;
+    }
+
     .social-links {
         justify-content: center;
+    }
+
+    .footer-bottom {
+        padding-top: 16px;
+        font-size: 0.82rem;
     }
 }
 
@@ -440,10 +508,6 @@ body {
     .container {
         padding-left: 12px;
         padding-right: 12px;
-    }
-
-    .nav-container {
-        height: 68px;
     }
 
     .logo {
@@ -455,21 +519,30 @@ body {
         font-size: 0.85rem;
     }
 
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-links a {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 0.78rem;
+    }
+
     .hero-section {
-        padding-top: 50px;
+        padding-top: 48px;
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.9rem;
     }
 
     .hero-content p {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
 
     .btn-store {
-        max-width: 100%;
-        padding-left: 16px;
-        padding-right: 16px;
+        width: 100%;
+        max-width: 330px;
     }
 }
