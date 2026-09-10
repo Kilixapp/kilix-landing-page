@@ -336,14 +336,13 @@ body {
         padding-right: 16px;
     }
 
-    /* Header: keep all existing links, but give them their own clean row on phones. */
     .nav-container {
         height: auto;
-        min-height: 68px;
+        min-height: 64px;
         flex-wrap: wrap;
-        padding-top: 10px;
-        padding-bottom: 8px;
-        row-gap: 8px;
+        padding-top: 8px;
+        padding-bottom: 7px;
+        row-gap: 6px;
     }
 
     .logo {
@@ -354,6 +353,7 @@ body {
         padding: 8px 16px;
         white-space: nowrap;
         flex-shrink: 0;
+        border-radius: 9px;
     }
 
     .nav-links {
@@ -362,13 +362,14 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 6px;
+        gap: 3px;
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        padding: 2px 0;
+        padding: 4px 2px 3px;
+        border-top: 1px solid rgba(15, 23, 42, 0.05);
     }
 
     .nav-links::-webkit-scrollbar {
@@ -377,14 +378,15 @@ body {
 
     .nav-links a {
         margin: 0;
-        padding: 4px 7px;
+        padding: 5px 8px;
         font-size: 0.84rem;
         line-height: 1.4;
         flex: 0 0 auto;
+        border-radius: 7px;
     }
 
     .hero-section {
-        padding: 54px 0 46px;
+        padding: 48px 0 44px;
     }
 
     .hero-container-centered {
@@ -394,23 +396,27 @@ body {
     .badge {
         max-width: 100%;
         padding: 7px 14px;
+        border-radius: 12px;
         font-size: 0.84rem;
+        margin-bottom: 12px;
     }
 
     .hero-content h1 {
         font-size: clamp(1.9rem, 7vw, 2.2rem);
         line-height: 1.35;
         margin: 14px 0 16px;
+        letter-spacing: -0.2px;
     }
 
     .hero-content p {
+        max-width: 620px;
         font-size: 1rem;
         line-height: 1.85;
-        margin-bottom: 28px;
+        margin: 0 auto 28px;
     }
 
     .download-buttons.center {
-        margin-top: 20px;
+        margin-top: 18px;
         gap: 12px;
     }
 
@@ -423,8 +429,11 @@ body {
     .btn-store {
         width: min(100%, 340px);
         min-width: 0;
+        min-height: 68px;
         justify-content: center;
-        padding: 12px 20px;
+        padding: 11px 18px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .btn-store i {
@@ -436,7 +445,7 @@ body {
     }
 
     .features-section {
-        padding: 58px 0;
+        padding: 54px 0;
     }
 
     .section-title {
@@ -452,7 +461,7 @@ body {
 
     .feature-card {
         padding: 30px 20px;
-        border-radius: 16px;
+        border-radius: 14px;
     }
 
     .feature-card p {
@@ -461,7 +470,7 @@ body {
     }
 
     .download-section {
-        padding: 52px 0;
+        padding: 50px 0;
     }
 
     .download-section h2 {
@@ -498,6 +507,11 @@ body {
         justify-content: center;
     }
 
+    .social-links a {
+        width: 42px;
+        height: 42px;
+    }
+
     .footer-bottom {
         padding-top: 16px;
         font-size: 0.82rem;
@@ -524,8 +538,8 @@ body {
     }
 
     .nav-links a {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 6px;
+        padding-right: 6px;
         font-size: 0.78rem;
     }
 
@@ -544,5 +558,38 @@ body {
     .btn-store {
         width: 100%;
         max-width: 330px;
+        min-height: 64px;
+    }
+}
+
+/* Modern global-platform polish: same content and same color palette. */
+.btn,
+.btn-store,
+.feature-card,
+.social-links a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn,
+.btn-store {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.feature-card {
+    box-shadow: 0 6px 22px rgba(15, 23, 42, 0.04);
+}
+
+.icon-box {
+    box-shadow: 0 4px 12px rgba(255, 102, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+    .header {
+        box-shadow: 0 1px 8px rgba(15, 23, 42, 0.06);
+    }
+
+    .btn-store:active,
+    .btn:active {
+        transform: scale(0.985);
     }
 }
