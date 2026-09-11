@@ -1,127 +1,426 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kilix - سوق الجملة في هاتفك</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260910-4">
-    <link rel="stylesheet" href="animated-background.css?v=20260910-3">
+
+    <title>Kilix - منصة التجارة بالجملة في الجزائر</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- Arabic Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header class="header">
+    <!-- =========================================
+         BACKGROUND DECORATION
+    ========================================== -->
+
+    <div class="page-decoration" aria-hidden="true">
+        <div class="orange-shape orange-shape-top"></div>
+        <div class="orange-line orange-line-1"></div>
+        <div class="orange-line orange-line-2"></div>
+        <div class="orange-shape orange-shape-side"></div>
+    </div>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="navbar">
+
         <div class="container nav-container">
-            <div class="logo">
-                <span class="logo-accent">Ki</span>lix
+
+            <!-- MENU -->
+            <div class="menu-wrapper">
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="فتح القائمة"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+
+                <!-- DROPDOWN MENU -->
+                <div
+                    class="menu-dropdown"
+                    id="menuDropdown"
+                >
+
+                    <a href="#download">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>تحميل التطبيق</span>
+                    </a>
+
+                    <a href="#contact">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>تواصل معنا</span>
+                    </a>
+
+                </div>
+
             </div>
-            <nav class="nav-links">
-                <a href="#hero">الرئيسية</a>
-                <a href="#features">المميزات</a>
-                <a href="#download">تحميل التطبيق</a>
-                <a href="#contact">تواصل معنا</a>
-            </nav>
-            <a href="#download" class="btn btn-primary btn-sm">حمل التطبيق</a>
+
+
+            <!-- LOGO -->
+            <a
+                href="#"
+                class="logo"
+                aria-label="Kilix"
+            >
+                <span class="logo-orange">Ki</span><span class="logo-blue">lix</span>
+            </a>
+
+
+            <!-- DOWNLOAD BUTTON -->
+            <a
+                href="#download"
+                class="btn-download-nav"
+            >
+                <i class="fa-solid fa-download"></i>
+                <span>حمّل التطبيق</span>
+            </a>
+
         </div>
+
     </header>
 
-    <section id="hero" class="hero-section text-center">
-        <div class="container hero-container-centered">
-            <div class="hero-content">
-                <span class="badge">منصة التجارة والجملة الأولى</span>
-                <h1>سوق الجملة في هاتفك</h1>
-                <p>منصة <strong>Kilix</strong> تجمع بين تجار الجملة والتجزئة في مكان واحد. تسوّق، اطلب، ووسّع تجارتك بكل سهولة وأمان من هاتفك الذكي.</p>
-                
-                <div class="download-buttons center">
-                    <a href="https://play.google.com/store/search?q=kilix&c=apps" id="playstore-btn-1" target="_blank" class="btn-store">
-                        <i class="fab fa-android"></i>
-                        <div class="btn-text">
-                            <small>حمل</small>
-                            <span>تطبيق أندرويد</span>
-                        </div>
-                    </a>
-                    <a href="https://www.apple.com/app-store/" target="_blank" class="btn-store btn-apple">
-                        <i class="fab fa-apple"></i>
-                        <div class="btn-text">
-                            <small>تنزيل من متجر</small>
-                            <span>App Store</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="features" class="features-section">
-        <div class="container">
-            <h2 class="section-title text-center">لماذا اختار التجار منصة Kilix؟</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon-box"><i class="fas fa-boxes-packing"></i></div>
-                    <h3>أسعار الجملة المباشرة</h3>
-                    <p>ربط مباشر مع المصانع وموردي الجملة للحصول على أفضل الأسعار دون وسطاء.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon-box"><i class="fas fa-truck-fast"></i></div>
-                    <h3>توصيل واستلام سريع</h3>
-                    <p>مع الدفع عند الاستلام وإمكانية فحص سلعتك قبل الدفع لضمان رضاك التام.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon-box"><i class="fas fa-shield-halved"></i></div>
-                    <h3>معاملات آمنة</h3>
-                    <p>ضمان موثوقية التجار والمنتجات لبيئة تجارية آمنة وفعالة للجميع.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- =========================================
+         MAIN
+    ========================================== -->
 
-    <section id="download" class="download-section">
-        <div class="container text-center">
-            <h2>جاهز لتطوير تجارتك مع Kilix؟</h2>
-            <p>حمل التطبيق الآن وابدأ التصفح والطلب بكل بساطة.</p>
-            <div class="download-buttons center">
-                <a href="https://play.google.com/store/search?q=kilix&c=apps" id="playstore-btn-2" target="_blank" class="btn-store">
-                    <i class="fab fa-android"></i>
-                    <div class="btn-text">
-                        <small>حمل</small>
-                        <span>تطبيق أندرويد</span>
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <!-- BADGE -->
+                    <div class="badge">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <span>
+                            منصة التجارة بالجملة في الجزائر
+                        </span>
+
                     </div>
-                </a>
-                <a href="https://www.apple.com/app-store/" target="_blank" class="btn-store btn-apple">
-                    <i class="fab fa-apple"></i>
-                    <div class="btn-text">
-                        <small>تنزيل من متجر</small>
-                        <span>App Store</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <footer id="contact" class="footer">
+
+                    <!-- TITLE -->
+                    <h1 class="hero-title">
+
+                        <span class="title-line title-line-dark">
+                            كل ما تحتاجه
+                        </span>
+
+                        <span class="title-line highlight">
+                            تجارتك
+                        </span>
+
+                    </h1>
+
+
+                    <!-- UNDERLINE -->
+                    <div
+                        class="title-underline"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <!-- DESCRIPTION -->
+                    <p class="hero-description">
+                        اكتشف المنتجات، قارن أسعار الجملة،
+                        تعرّف على الموردين واطلب مباشرة
+                        من هاتفك.
+                    </p>
+
+
+                    <!-- CTA -->
+                    <div
+                        class="cta-buttons"
+                        id="download"
+                    >
+
+                        <!-- ANDROID -->
+                        <a
+                            href="#"
+                            class="btn btn-primary"
+                        >
+                            <i class="fa-brands fa-android"></i>
+
+                            <span>
+                                حمّل Kilix الآن
+                            </span>
+
+                            <i class="fa-solid fa-arrow-left btn-arrow"></i>
+                        </a>
+
+
+                        <!-- IOS -->
+                        <a
+                            href="#"
+                            class="btn btn-secondary"
+                        >
+                            <i class="fa-brands fa-apple"></i>
+
+                            <span>
+                                App Store
+                            </span>
+                        </a>
+
+                    </div>
+
+
+                    <!-- AVAILABILITY -->
+                    <div class="platform-availability">
+
+                        <span>
+                            متوفر على أندرويد
+                        </span>
+
+                        <span class="divider">
+                            |
+                        </span>
+
+                        <span class="muted">
+                            قريباً على iOS
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FEATURES
+        ========================================== -->
+
+        <section class="features">
+
+            <div class="container features-container">
+
+                <div class="features-grid">
+
+                    <!-- FEATURE 1 -->
+                    <article class="feature-card">
+
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+
+                        <h3>
+                            اطلب مباشرة من<br>
+                            هاتفك
+                        </h3>
+
+                    </article>
+
+
+                    <!-- FEATURE 2 -->
+                    <article class="feature-card">
+
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+
+                        <h3>
+                            موردين موثوقين<br>
+                            ومتنوعة
+                        </h3>
+
+                    </article>
+
+
+                    <!-- FEATURE 3 -->
+                    <article class="feature-card">
+
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-tags"></i>
+                        </div>
+
+                        <h3>
+                            مقارنة الأسعار بين<br>
+                            الموردين
+                        </h3>
+
+                    </article>
+
+
+                    <!-- FEATURE 4 -->
+                    <article class="feature-card">
+
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                        <h3>
+                            ابحث ذكي بالاسم أو<br>
+                            الصورة
+                        </h3>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             BOTTOM DECORATION
+        ========================================== -->
+
+        <div
+            class="bottom-decoration"
+            aria-hidden="true"
+        >
+            <div class="bottom-orange"></div>
+            <div class="bottom-blue"></div>
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer
+        class="site-footer"
+        id="contact"
+    >
+
         <div class="container footer-container">
-            <div class="footer-info">
-                <h3>Kilix</h3>
-                <p>حلول سوق الجملة المبتكرة في متناول يدك.</p>
-                <p><i class="fas fa-envelope"></i> kilixapp@gmail.com</p>
+
+            <!-- FOOTER BRAND -->
+            <div class="footer-brand">
+
+                <a
+                    href="#"
+                    class="footer-logo"
+                    aria-label="Kilix"
+                >
+                    <span class="logo-orange">Ki</span><span class="logo-blue">lix</span>
+                </a>
+
+                <p>
+                    منصتك للتجارة بالجملة في الجزائر.
+                </p>
+
             </div>
-            <div class="footer-social">
-                <h4>تابعنا على شبكات التواصل</h4>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/17crxYosFU/" id="fb-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/kilixapp" id="insta-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:kilixapp@gmail.com" id="email-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
+
+
+            <!-- CONTACT LINKS -->
+            <div class="footer-contact">
+
+                <!-- FACEBOOK -->
+                <a
+                    href="https://www.facebook.com/profile.php?id=61593413597222"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                    aria-label="Kilix على Facebook"
+                >
+                    <span class="footer-icon">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </span>
+
+                    <span>
+                        Facebook
+                    </span>
+                </a>
+
+
+                <!-- INSTAGRAM -->
+                <a
+                    href="https://www.instagram.com/kilixapp/?utm_source=ig_web_button_share_sheet"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                    aria-label="Kilix على Instagram"
+                >
+                    <span class="footer-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </span>
+
+                    <span>
+                        Instagram
+                    </span>
+                </a>
+
+
+                <!-- EMAIL -->
+                <a
+                    href="mailto:kilixservice@gmail.com"
+                    class="footer-link"
+                    aria-label="التواصل عبر البريد الإلكتروني"
+                >
+                    <span class="footer-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </span>
+
+                    <span>
+                        kilixservice@gmail.com
+                    </span>
+                </a>
+
             </div>
+
         </div>
-        <div class="footer-bottom text-center">
-            <p>&copy; 2026 Kilix. جميع الحقوق محفوظة.</p>
+
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    © 2026 Kilix. جميع الحقوق محفوظة.
+                </p>
+
+            </div>
+
         </div>
+
     </footer>
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script src="script.js"></script>
+
 </body>
-    </html>
+</html>
