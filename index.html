@@ -87,10 +87,10 @@
                             <i class="fa-solid fa-arrow-left btn-arrow"></i>
                         </a>
 
-                        <a href="#" class="btn btn-secondary">
+                        <button type="button" class="btn btn-secondary" id="iosRegistrationButton" aria-haspopup="dialog" aria-controls="iosRegistrationModal">
                             <i class="fa-brands fa-apple"></i>
-                            <span>App Store</span>
-                        </a>
+                            <span>iPhone</span>
+                        </button>
                     </div>
 
                     <div class="platform-availability">
@@ -176,6 +176,48 @@
         </div>
     </footer>
 
+    <!-- iPhone early-access registration -->
+    <div class="ios-modal" id="iosRegistrationModal" role="dialog" aria-modal="true" aria-labelledby="iosRegistrationTitle" aria-hidden="true">
+        <div class="ios-modal-backdrop" data-ios-close></div>
+        <div class="ios-modal-card">
+            <button type="button" class="ios-modal-close" id="iosModalClose" aria-label="إغلاق">&times;</button>
+
+            <div class="ios-modal-icon" aria-hidden="true">
+                <i class="fa-brands fa-apple"></i>
+            </div>
+
+            <h2 id="iosRegistrationTitle">سجّل اهتمامك بتطبيق iPhone</h2>
+            <p class="ios-modal-description">أدخل معلوماتك وسنحتفظ بتسجيلك لإعلامك عند توفر تطبيق Kilix على iPhone.</p>
+
+            <form id="iosRegistrationForm" class="ios-registration-form" novalidate>
+                <label for="iosFullName">الاسم الكامل</label>
+                <input id="iosFullName" name="full_name" type="text" autocomplete="name" maxlength="120" required placeholder="أدخل اسمك الكامل">
+
+                <label for="iosEmail">البريد الإلكتروني</label>
+                <input id="iosEmail" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="example@email.com" dir="ltr">
+
+                <label for="iosPhone">رقم الهاتف <span>(اختياري)</span></label>
+                <input id="iosPhone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="رقم الهاتف" dir="ltr">
+
+                <label for="iosRole">نوع النشاط</label>
+                <select id="iosRole" name="role" required>
+                    <option value="" selected disabled>اختر نوع النشاط</option>
+                    <option value="تاجر">تاجر</option>
+                    <option value="تاجر إلكتروني">تاجر إلكتروني</option>
+                    <option value="مورد">مورد</option>
+                </select>
+
+                <button type="submit" class="ios-submit-button" id="iosSubmitButton">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>تسجيل</span>
+                </button>
+
+                <p class="ios-form-message" id="iosFormMessage" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>
