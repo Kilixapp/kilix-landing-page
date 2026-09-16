@@ -136,8 +136,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const iosMessage = document.getElementById("iosFormMessage");
     const iosSubmitButton = document.getElementById("iosSubmitButton");
 
-    const SUPABASE_URL = "https://sqvtimbmpiwlnikipicp.supabase.co";
-    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxdnRpbWJtcGl3bG5pa2lwaWNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NDgwMTksImV4cCI6MjA3NjAyNDAxOX0.UPe-OQnA0FJtPS5P59cahE3BPcdVfUHki6SG0WKPdpU";
+    // Kilix View Supabase project
+    const SUPABASE_URL = "https://xsswxjaaqhkbsheeclge.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_4Zq8XdOzwyqElOEd-4tPvQ_70y1weCa";
 
     const supabaseClient = window.supabase
         ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
