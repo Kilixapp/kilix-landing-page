@@ -13,25 +13,16 @@ document.addEventListener("DOMContentLoaded", function () {
         function openMenu() {
             menuWrapper.classList.add("open");
             menuToggle.classList.add("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "true"
-            );
+            menuToggle.setAttribute("aria-expanded", "true");
         }
 
         function closeMenu() {
             menuWrapper.classList.remove("open");
             menuToggle.classList.remove("active");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+            menuToggle.setAttribute("aria-expanded", "false");
         }
 
         menuToggle.addEventListener("click", function (event) {
-
             event.preventDefault();
             event.stopPropagation();
 
@@ -40,42 +31,25 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 openMenu();
             }
-
         });
 
-
-        /* إغلاق عند الضغط خارج القائمة */
-
         document.addEventListener("click", function (event) {
-
             if (!menuWrapper.contains(event.target)) {
                 closeMenu();
             }
-
         });
 
-
-        /* إغلاق بعد اختيار عنصر */
-
         menuDropdown.querySelectorAll("a").forEach(function (link) {
-
             link.addEventListener("click", function () {
                 closeMenu();
             });
-
         });
 
-
-        /* إغلاق بزر Escape */
-
         document.addEventListener("keydown", function (event) {
-
             if (event.key === "Escape") {
                 closeMenu();
             }
-
         });
-
     }
 
 
@@ -88,9 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     internalLinks.forEach(function (link) {
-
         link.addEventListener("click", function (event) {
-
             const targetId = link.getAttribute("href");
             const target = document.querySelector(targetId);
 
@@ -101,10 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             const header = document.querySelector(".navbar");
-
-            const headerHeight =
-                header ? header.offsetHeight : 0;
-
+            const headerHeight = header ? header.offsetHeight : 0;
             const targetPosition =
                 target.getBoundingClientRect().top +
                 window.scrollY -
@@ -114,9 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 top: targetPosition,
                 behavior: "smooth"
             });
-
         });
-
     });
 
 
@@ -129,22 +96,16 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     if ("IntersectionObserver" in window) {
-
         const observer = new IntersectionObserver(
             function (entries, observer) {
-
                 entries.forEach(function (entry) {
-
                     if (!entry.isIntersecting) {
                         return;
                     }
 
                     entry.target.classList.add("is-visible");
-
                     observer.unobserve(entry.target);
-
                 });
-
             },
             {
                 threshold: 0.1,
@@ -152,31 +113,140 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
-
         revealElements.forEach(function (element, index) {
-
-            element.style.transitionDelay =
-                (index * 0.08) + "s";
-
+            element.style.transitionDelay = (index * 0.08) + "s";
             element.classList.add("reveal-element");
-
             observer.observe(element);
-
         });
-
     } else {
-
         revealElements.forEach(function (element) {
-
             element.classList.add("is-visible");
-
         });
-
     }
 
 
     /* =========================================
-       4. REDUCE MOTION
+       4. iPHONE REGISTRATION / SUPABASE
+    ========================================== */
+
+    const iosButton = document.getElementById("iosRegistrationButton");
+    const iosModal = document.getElementById("iosRegistrationModal");
+    const iosCloseButton = document.getElementById("iosModalClose");
+    const iosForm = document.getElementById("iosRegistrationForm");
+    const iosMessage = document.getElementById("iosFormMessage");
+    const iosSubmitButton = document.getElementById("iosSubmitButton");
+
+    const SUPABASE_URL = "https://sqvtimbmpiwlnikipicp.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNxdnRpbWJtcGl3bG5pa2lwaWNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NDgwMTksImV4cCI6MjA3NjAyNDAxOX0.UPe-OQnA0FJtPS5P59cahE3BPcdVfUHki6SG0WKPdpU";
+
+    const supabaseClient = window.supabase
+        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        : null;
+
+    function openIosModal() {
+        if (!iosModal) return;
+
+        iosModal.classList.add("is-open");
+        iosModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("ios-modal-open");
+
+        window.setTimeout(function () {
+            const nameInput = document.getElementById("iosFullName");
+            if (nameInput) nameInput.focus();
+        }, 80);
+    }
+
+    function closeIosModal() {
+        if (!iosModal) return;
+
+        iosModal.classList.remove("is-open");
+        iosModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("ios-modal-open");
+    }
+
+    function showIosMessage(message, type) {
+        if (!iosMessage) return;
+
+        iosMessage.textContent = message;
+        iosMessage.className = "ios-form-message " + (type || "");
+    }
+
+    if (iosButton && iosModal) {
+        iosButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            openIosModal();
+        });
+    }
+
+    if (iosCloseButton) {
+        iosCloseButton.addEventListener("click", closeIosModal);
+    }
+
+    if (iosModal) {
+        iosModal.querySelectorAll("[data-ios-close]").forEach(function (element) {
+            element.addEventListener("click", closeIosModal);
+        });
+    }
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && iosModal && iosModal.classList.contains("is-open")) {
+            closeIosModal();
+        }
+    });
+
+    if (iosForm) {
+        iosForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            if (!supabaseClient) {
+                showIosMessage("تعذر الاتصال بالخدمة حالياً. حاول مرة أخرى.", "error");
+                return;
+            }
+
+            if (!iosForm.checkValidity()) {
+                iosForm.reportValidity();
+                return;
+            }
+
+            const fullName = document.getElementById("iosFullName").value.trim();
+            const email = document.getElementById("iosEmail").value.trim().toLowerCase();
+            const phoneValue = document.getElementById("iosPhone").value.trim();
+            const role = document.getElementById("iosRole").value;
+
+            iosSubmitButton.disabled = true;
+            iosSubmitButton.classList.add("is-loading");
+            showIosMessage("جارٍ حفظ تسجيلك...", "loading");
+
+            const { error } = await supabaseClient
+                .from("ios_waitlist_registrations")
+                .insert({
+                    full_name: fullName,
+                    email: email,
+                    phone: phoneValue || null,
+                    role: role
+                });
+
+            iosSubmitButton.disabled = false;
+            iosSubmitButton.classList.remove("is-loading");
+
+            if (error) {
+                if (error.code === "23505") {
+                    showIosMessage("هذا البريد مسجل مسبقاً لدينا. تم حفظ تسجيلك من قبل.", "success");
+                } else {
+                    console.error("iOS registration error:", error);
+                    showIosMessage("لم نتمكن من حفظ التسجيل حالياً. حاول مرة أخرى.", "error");
+                }
+                return;
+            }
+
+            showIosMessage("✓ تم حفظ تسجيلك بنجاح. سنخبرك عند توفر تطبيق iPhone.", "success");
+            iosForm.reset();
+        });
+    }
+
+
+    /* =========================================
+       5. REDUCE MOTION
     ========================================== */
 
     const prefersReducedMotion = window.matchMedia(
@@ -184,12 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ).matches;
 
     if (prefersReducedMotion) {
-
-        document.documentElement.classList.add(
-            "reduce-motion"
-        );
-
+        document.documentElement.classList.add("reduce-motion");
     }
 
 });
-
