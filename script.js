@@ -126,23 +126,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       4. iPHONE REGISTRATION / SUPABASE
+       4. iPHONE WEB APP NOTICE
     ========================================== */
 
     const iosButton = document.getElementById("iosRegistrationButton");
     const iosModal = document.getElementById("iosRegistrationModal");
     const iosCloseButton = document.getElementById("iosModalClose");
-    const iosForm = document.getElementById("iosRegistrationForm");
-    const iosMessage = document.getElementById("iosFormMessage");
-    const iosSubmitButton = document.getElementById("iosSubmitButton");
-
-    // Kilix View Supabase project
-    const SUPABASE_URL = "https://xsswxjaaqhkbsheeclge.supabase.co";
-    const SUPABASE_ANON_KEY = "sb_publishable_4Zq8XdOzwyqElOEd-4tPvQ_70y1weCa";
-
-    const supabaseClient = window.supabase
-        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-        : null;
 
     function openIosModal() {
         if (!iosModal) return;
@@ -150,11 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
         iosModal.classList.add("is-open");
         iosModal.setAttribute("aria-hidden", "false");
         document.body.classList.add("ios-modal-open");
-
-        window.setTimeout(function () {
-            const nameInput = document.getElementById("iosFullName");
-            if (nameInput) nameInput.focus();
-        }, 80);
     }
 
     function closeIosModal() {
@@ -163,13 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
         iosModal.classList.remove("is-open");
         iosModal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("ios-modal-open");
-    }
-
-    function showIosMessage(message, type) {
-        if (!iosMessage) return;
-
-        iosMessage.textContent = message;
-        iosMessage.className = "ios-form-message " + (type || "");
     }
 
     if (iosButton && iosModal) {
@@ -194,56 +171,6 @@ document.addEventListener("DOMContentLoaded", function () {
             closeIosModal();
         }
     });
-
-    if (iosForm) {
-        iosForm.addEventListener("submit", async function (event) {
-            event.preventDefault();
-
-            if (!supabaseClient) {
-                showIosMessage("تعذر الاتصال بالخدمة حالياً. حاول مرة أخرى.", "error");
-                return;
-            }
-
-            if (!iosForm.checkValidity()) {
-                iosForm.reportValidity();
-                return;
-            }
-
-            const fullName = document.getElementById("iosFullName").value.trim();
-            const email = document.getElementById("iosEmail").value.trim().toLowerCase();
-            const phoneValue = document.getElementById("iosPhone").value.trim();
-            const role = document.getElementById("iosRole").value;
-
-            iosSubmitButton.disabled = true;
-            iosSubmitButton.classList.add("is-loading");
-            showIosMessage("جارٍ حفظ تسجيلك...", "loading");
-
-            const { error } = await supabaseClient
-                .from("ios_waitlist_registrations")
-                .insert({
-                    full_name: fullName,
-                    email: email,
-                    phone: phoneValue || null,
-                    role: role
-                });
-
-            iosSubmitButton.disabled = false;
-            iosSubmitButton.classList.remove("is-loading");
-
-            if (error) {
-                if (error.code === "23505") {
-                    showIosMessage("هذا البريد مسجل مسبقاً لدينا. تم حفظ تسجيلك من قبل.", "success");
-                } else {
-                    console.error("iOS registration error:", error);
-                    showIosMessage("لم نتمكن من حفظ التسجيل حالياً. حاول مرة أخرى.", "error");
-                }
-                return;
-            }
-
-            showIosMessage("✓ تم حفظ تسجيلك بنجاح. سنخبرك عند توفر تطبيق iPhone.", "success");
-            iosForm.reset();
-        });
-    }
 
 
     /* =========================================
