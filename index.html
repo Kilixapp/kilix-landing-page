@@ -177,49 +177,29 @@
         </div>
     </footer>
 
-    <!-- iPhone early-access registration -->
+    <!-- iPhone web-app modal -->
     <div class="ios-modal" id="iosRegistrationModal" role="dialog" aria-modal="true" aria-labelledby="iosRegistrationTitle" aria-hidden="true">
         <div class="ios-modal-backdrop" data-ios-close></div>
-        <div class="ios-modal-card">
+        <div class="ios-modal-card ios-web-app-card">
             <button type="button" class="ios-modal-close" id="iosModalClose" aria-label="إغلاق">&times;</button>
 
             <div class="ios-modal-icon" aria-hidden="true">
                 <i class="fa-brands fa-apple"></i>
             </div>
 
-            <h2 id="iosRegistrationTitle">سجّل لإعلامك عند توفر التطبيق قريبًا على App Store</h2>
-            <p class="ios-modal-description">أدخل معلوماتك وسنحتفظ بتسجيلك لإعلامك عند توفر تطبيق Kilix على iPhone.</p>
+            <h2 id="iosRegistrationTitle">تطبيق Kilix غير متاح حاليًا على App Store</h2>
+            <p class="ios-modal-description">يمكنك استخدام Kilix مباشرة من المتصفح عبر نسخة الويب.</p>
 
-            <form id="iosRegistrationForm" class="ios-registration-form" novalidate>
-                <label for="iosFullName">الاسم الكامل</label>
-                <input id="iosFullName" name="full_name" type="text" autocomplete="name" maxlength="120" required placeholder="أدخل اسمك الكامل">
-
-                <label for="iosEmail">البريد الإلكتروني</label>
-                <input id="iosEmail" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="example@email.com" dir="ltr">
-
-                <label for="iosPhone">رقم الهاتف <span>(اختياري)</span></label>
-                <input id="iosPhone" name="phone" type="tel" autocomplete="tel" maxlength="30" placeholder="رقم الهاتف" dir="ltr">
-
-                <label for="iosRole">نوع النشاط</label>
-                <select id="iosRole" name="role" required>
-                    <option value="" selected disabled>اختر نوع النشاط</option>
-                    <option value="تاجر">تاجر</option>
-                    <option value="تاجر إلكتروني">تاجر إلكتروني</option>
-                    <option value="مورد">مورد</option>
-                    <option value="أفضل عدم الإجابة">أفضل عدم الإجابة</option>
-                </select>
-
-                <button type="submit" class="ios-submit-button" id="iosSubmitButton">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span>تسجيل</span>
-                </button>
-
-                <p class="ios-form-message" id="iosFormMessage" role="status" aria-live="polite"></p>
-            </form>
+            <a
+                href="https://samidesjd.github.io/Kilix-Web/"
+                class="ios-submit-button ios-continue-button"
+            >
+                <span>الاستمرار</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
 </html>
